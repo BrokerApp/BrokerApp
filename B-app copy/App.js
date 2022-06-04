@@ -36,7 +36,7 @@ const App = () => {
       setIsLoading(false)
     }, 4000)
   }, [])
-
+  //dxrk-rave
   if (isLoading) {
     return (
       <View style={{ flex: 1, justifyContent: "space-between", alignItems: "center", backgroundColor: "#191914", flexDirection: "column" }} >

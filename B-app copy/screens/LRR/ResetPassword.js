@@ -13,8 +13,8 @@ const ResetPasswordScreen = () => {
 
     const resetPassword = () => {
 
-        var emailAddress = email;
-        sendPasswordResetEmail(auth, emailAddress).then(function () {
+
+        sendPasswordResetEmail(auth, email).then(() => {
         })
             .catch(err => setError("Wrong E-mail"))
     }

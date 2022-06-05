@@ -22,7 +22,7 @@ const Tab = createBottomTabNavigator();
 
 const MainTabScreen = () => {
     return (
-        <Tab.Navigator initialRouteName="Home" screenOptions={{ tabBarActiveBackgroundColor: "#0b0b0b", tabBarInactiveBackgroundColor: "#0b0b0b", headerShown: false, tabBarActiveTintColor: "#4287f5", tabBarStyle: { borderColor: "#0b0b0b", borderTopColor: "#0b0b0b", borderBottomColor: "#0b0b0b", borderLeftColor: "#0b0b0b", borderRightColor: "#0b0b0b", borderEndColor: "#0b0b0b", borderStartColor: "#0b0b0b" } }} >
+        <Tab.Navigator initialRouteName="Profile" screenOptions={{ tabBarActiveBackgroundColor: "#0b0b0b", tabBarInactiveBackgroundColor: "#0b0b0b", headerShown: false, tabBarActiveTintColor: "#4287f5", tabBarStyle: { borderColor: "#0b0b0b", borderTopColor: "#0b0b0b", borderBottomColor: "#0b0b0b", borderLeftColor: "#0b0b0b", borderRightColor: "#0b0b0b", borderEndColor: "#0b0b0b", borderStartColor: "#0b0b0b" } }} >
             <Tab.Screen name="Home" component={HomeStackScreen} options={{ tabBarColor: "#0b0b0b", tabBarIcon: ({ focused, color }) => (<SimpleLineIcons name="home" color={focused ? "#4287f5" : "#011d4a"} size={20} />) }} />
             <Tab.Screen name="Portfolio" component={PortfolioStackScreen} options={{ tabBarColor: "#0b0b0b", tabBarIcon: ({ focused, color }) => (<SimpleLineIcons name="briefcase" color={focused ? "#4287f5" : "#011d4a"} size={20} />) }} />
             <Tab.Screen name="News" component={NewsStackScreen} options={{ tabBarColor: "#0b0b0b", tabBarIcon: ({ focused, color }) => (<SimpleLineIcons name="calendar" color={focused ? "#4287f5" : "#011d4a"} size={20} />) }} />
@@ -45,7 +45,7 @@ const HomeStackScreen = ({ navigation }) => (
 const ProfileStackScreen = ({ navigation }) => (
     <ProfileStack.Navigator screenOptions={{ headerStyle: { backgroundColor: "#0b0b0b", borderBottomColor: "#0b0b0b" }, headerTintColor: "#4287f5", headerTitleStyle: { fontWeight: "bold" }, headerTitleAlign: "center" }} >
 
-        <ProfileStack.Screen name="Profile" component={Profile} options={{ title: "Profile", headerRight: () => (<MaterialCommunityIcons.Button name="dots-vertical" size={25} backgroundColor="#0b0b0b" color="#4287f5" onPress={() => { navigation.navigate("Settings") }} ></MaterialCommunityIcons.Button>) }} />
+        <ProfileStack.Screen name="Profile" component={Profile} options={{ title: "Profile", headerRight: () => (<MaterialCommunityIcons.Button name="menu" size={25} backgroundColor="#0b0b0b" color="#4287f5" onPress={() => { navigation.navigate("Settings") }} ></MaterialCommunityIcons.Button>) }} />
     </ProfileStack.Navigator>
 )
 

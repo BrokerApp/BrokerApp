@@ -30,18 +30,19 @@ const RegisterScreen = ({ navigation }) => {
         isValidPassword: true,
     });
 
+
     const register = () => {
 
         createUserWithEmailAndPassword(auth, email, password)
-            .then(authUser => {
-                authUser.user.updateProfile({
+            .then(
+                updateProfile({
                     displayName: userName,
-                    photoURL: imageUrl || "https://firebasestorage.googleapis.com/v0/b/marsy-25efa.appspot.com/o/output-onlinepngtools%20(2).png?alt=media&token=f39c121f-d6fc-45a3-9dc8-b12a238c6e81",
+                    photoURL: imageUrl || "https://firebasestorage.googleapis.com/v0/b/broker-app-202ae.appspot.com/o/24-248253_user-profile-default-image-png-clipart-png-download.png?alt=media&token=97cd489c-198f-43e1-9265-58a0c8066982",
                     email: email,
                     uid: userName,
 
-                });
-            })
+                })
+            )
             .catch((err) => {
                 setData({
                     ...data,
@@ -49,6 +50,7 @@ const RegisterScreen = ({ navigation }) => {
                 })
             })
     }
+
 
 
     const updateSecureTextEntry = () => {

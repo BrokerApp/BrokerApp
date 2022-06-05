@@ -10,6 +10,8 @@ import Home from "./screens/MainScreens/Home"
 import Notifications from "./screens/MainScreens/Notifications"
 import Profile from "./screens/MainScreens/Profile"
 import Portfolio from "./screens/MainScreens/Portfolio"
+import MainTabScreen from './screens/MainScreens/TabScreens';
+import News from './screens/MainScreens/News';
 
 const Stack = createNativeStackNavigator();
 
@@ -37,7 +39,7 @@ const App = () => {
   useEffect(() => {
     setTimeout(() => {
       setIsLoading(false)
-    }, 4000)
+    }, 1000)
   }, [])
   //dxrk-rave
   if (isLoading) {
@@ -69,9 +71,10 @@ const App = () => {
     return (
       <NavigationContainer  >
         <StatusBar barStyle="light-content" backgroundColor="#0b0b0b" />
-        <Stack.Navigator screenOptions={{ headerShown: false }} drawerContent={props => <DrawerContent {...props} />} >
-          <Stack.Screen name="Home" component={Home} />
+        <Stack.Navigator screenOptions={{ headerShown: false }} drawerContent={props => <DrawerContent {...props} />}  >
+          <Stack.Screen name="Home" component={MainTabScreen} />
           <Stack.Screen name="Portfolio" component={Portfolio} />
+          <Stack.Screen name="News" component={News} />
           <Stack.Screen name="Notifications" component={Notifications} />
           <Stack.Screen name="Profile" component={Profile} />
           {/* <Stack.Screen name="Notifications" component={Notifications} /> */}
@@ -83,13 +86,6 @@ const App = () => {
   }
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+
 
 export default App;

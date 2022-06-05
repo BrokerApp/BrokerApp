@@ -2,7 +2,7 @@ import React, { useState, useLayoutEffect } from "react";
 import { View, Text, StyleSheet, TextInput, StatusBar, TouchableOpacity } from "react-native";
 import { Button } from "react-native-elements";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
-import { createUserWithEmailAndPassword } from "firebase/auth";
+import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { auth } from "../../firebase"
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
@@ -34,15 +34,15 @@ const RegisterScreen = ({ navigation }) => {
     const register = () => {
 
         createUserWithEmailAndPassword(auth, email, password)
-            .then(
-                updateProfile({
+            .then(() => {
+                updateProfile(auth.currentUser, {
                     displayName: userName,
                     photoURL: imageUrl || "https://firebasestorage.googleapis.com/v0/b/broker-app-202ae.appspot.com/o/24-248253_user-profile-default-image-png-clipart-png-download.png?alt=media&token=97cd489c-198f-43e1-9265-58a0c8066982",
                     email: email,
                     uid: userName,
 
-                })
-            )
+                });
+            })
             .catch((err) => {
                 setData({
                     ...data,
@@ -50,6 +50,25 @@ const RegisterScreen = ({ navigation }) => {
                 })
             })
     }
+
+
+    //         .then(
+    //             updateProfile(auth, {
+    //                 displayName: userName,
+    //                 photoURL: imageUrl || "https://firebasestorage.googleapis.com/v0/b/broker-app-202ae.appspot.com/o/24-248253_user-profile-default-image-png-clipart-png-download.png?alt=media&token=97cd489c-198f-43e1-9265-58a0c8066982",
+    //                 email: email,
+    //                 uid: userName,
+
+    //             })
+
+    //         )
+    //         .catch((err) => {
+    //             setData({
+    //                 ...data,
+    //                 isValidEmail: false
+    //             })
+    //         })
+    // }
 
 
 

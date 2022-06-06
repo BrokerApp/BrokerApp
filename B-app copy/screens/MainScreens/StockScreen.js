@@ -1,7 +1,10 @@
 
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import React, { useState, useEffect } from 'react';
 import { Text, TouchableOpacity, View, Dimensions } from 'react-native'
 import { LineChart } from "react-native-chart-kit";
+
+
 
 const StockScreen = () => {
     const [stockPrice, setStockPrice] = useState("")
@@ -149,9 +152,6 @@ const StockScreen = () => {
         return views;
     }
 
-
-
-
     return (
 
 
@@ -169,6 +169,9 @@ const StockScreen = () => {
     );
 
 }
+
+
+
 
 
 export default StockScreen;

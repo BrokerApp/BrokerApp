@@ -9,10 +9,11 @@ import Home from "./screens/MainScreens/Home"
 import Notifications from "./screens/MainScreens/Notifications"
 import Profile from "./screens/MainScreens/Profile"
 import Portfolio from "./screens/MainScreens/Portfolio"
-import MainTabScreen, { NewsStackScreen, NotificationsStackScreen, SettingsStackScreen } from './screens/MainScreens/TabScreens';
+import MainTabScreen, { NewsStackScreen, NotificationsStackScreen, SettingsStackScreen, StockScreenStackScreen } from './screens/MainScreens/TabScreens';
 import News from './screens/MainScreens/News';
 import Settings from './screens/SubScreens/Settings';
 import Accounting from './screens/MainScreens/Accounting';
+import StockScreen from './screens/MainScreens/StockScreen';
 
 
 const Stack = createNativeStackNavigator();
@@ -81,6 +82,7 @@ const App = () => {
           <Stack.Screen name="Profile" component={Profile} />
           <Stack.Screen name="Settings" component={SettingsStackScreen} />
           <Stack.Screen name="Accounting" component={Accounting} />
+          <Stack.Screen name="StockScreen" component={StockScreenStackScreen} />
         </Stack.Navigator>
 
       </NavigationContainer>

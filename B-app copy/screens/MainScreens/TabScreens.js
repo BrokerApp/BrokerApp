@@ -13,6 +13,7 @@ import { StyleSheet } from "react-native";
 import News from "./News";
 import Settings from "../SubScreens/Settings";
 import Notifications from "./Notifications";
+import StockScreen from "./StockScreen";
 
 const HomeStack = createNativeStackNavigator();
 const ProfileStack = createNativeStackNavigator();
@@ -21,6 +22,7 @@ const AccountingStack = createNativeStackNavigator();
 const NewsStack = createNativeStackNavigator();
 const SettingsStack = createNativeStackNavigator();
 const NotificationsStack = createNativeStackNavigator();
+const StockScreenStack = createNativeStackNavigator();
 
 const Tab = createBottomTabNavigator();
 
@@ -81,6 +83,12 @@ export const SettingsStackScreen = ({ navigation }) => (
     <SettingsStack.Navigator screenOptions={{ headerStyle: { backgroundColor: "#030012", borderBottomColor: "#030012" }, headerTintColor: "#fff", headerTitleStyle: { fontWeight: "bold" }, headerTitleAlign: "center" }} >
         <SettingsStack.Screen name="Settings" component={Settings} options={{ title: "Settings", headerLeft: () => (<MaterialCommunityIcons.Button name="arrow-left" size={25} backgroundColor="#030012" color="#fff" onPress={() => { navigation.navigate("ProfileStack") }} ></MaterialCommunityIcons.Button>) }} />
     </SettingsStack.Navigator>
+)
+
+export const StockScreenStackScreen = ({ navigation }) => (
+    <StockScreenStack.Navigator screenOptions={{ headerStyle: { backgroundColor: "#030012", borderBottomColor: "#030012" }, headerTintColor: "#fff", headerTitleStyle: { fontWeight: "bold" }, headerTitleAlign: "center" }} >
+        <StockScreenStack.Screen name="StockScreen" component={StockScreen} options={{ title: "StockScreen", headerLeft: () => (<MaterialCommunityIcons.Button name="arrow-left" size={25} backgroundColor="#030012" color="#fff" onPress={() => { navigation.navigate("Home") }} ></MaterialCommunityIcons.Button>) }} />
+    </StockScreenStack.Navigator>
 )
 
 export default MainTabScreen;

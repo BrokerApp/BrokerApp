@@ -62,16 +62,14 @@ const Stock = () => {
         views.push(
 
             <View style={{ width: "100%", backgroundColor: "#030000", height: 70, marginTop: 10, paddingLeft: 30, justifyContent: "center", borderBottomColor: "#454545", borderBottomWidth: 0.5 }} >
-                <TouchableOpacity style={{ width: "100%", }} onPress={() => console.log("worked")} >
-                    <View style={{ flexDirection: "row", justifyContent: "space-between" }} >
-                        <Text style={{ color: "white", fontSize: 28, }} >Amazon.com</Text>
-                        <Text style={{ color: "white", fontSize: 28, marginRight: 10 }}> {stockPrice} $</Text>
-                    </View>
-                    <View style={{ flexDirection: "row", justifyContent: "space-between" }} >
-                        <Text style={{ color: "gray", fontSize: 13 }} >{stockName}</Text>
-                        <Text style={{ backgroundColor: priceChange >= 0 ? "#09ad00" : "#ad0000", fontSize: 20, marginRight: 10, color: "white", borderRadius: 10, marginBottom: 5 }}> {priceChange} $ </Text>
-                    </View>
-                </TouchableOpacity>
+                <View style={{ flexDirection: "row", justifyContent: "space-between" }} >
+                    <Text style={{ color: "white", fontSize: 28, }} >Amazon.com</Text>
+                    <Text style={{ color: "white", fontSize: 28, marginRight: 10 }}> {stockPrice} $</Text>
+                </View>
+                <View style={{ flexDirection: "row", justifyContent: "space-between" }} >
+                    <Text style={{ color: "gray", fontSize: 13 }} >{stockName}</Text>
+                    <Text style={{ backgroundColor: priceChange >= 0 ? "#09ad00" : "#ad0000", fontSize: 20, marginRight: 10, color: "white", borderRadius: 10, marginBottom: 5 }}> {priceChange} $ </Text>
+                </View>
             </View>
 
 

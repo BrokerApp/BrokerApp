@@ -11,21 +11,27 @@ import Portfolio from "./Portfolio";
 import Notifications from "./Notifications";
 import { StyleSheet } from "react-native";
 import News from "./News";
+import Settings from "../SubScreens/Settings";
 
 const HomeStack = createNativeStackNavigator();
 const ProfileStack = createNativeStackNavigator();
 const PortfolioStack = createNativeStackNavigator();
 const NotificationsStack = createNativeStackNavigator();
 const NewsStack = createNativeStackNavigator();
+const SettingsStack = createNativeStackNavigator();
 
 const Tab = createBottomTabNavigator();
+
+const EmptyScreen = () => {
+    return (null)
+}
 
 const MainTabScreen = () => {
     return (
         <Tab.Navigator initialRouteName="Profile" screenOptions={{ tabBarActiveBackgroundColor: "#0b0b0b", tabBarInactiveBackgroundColor: "#0b0b0b", headerShown: false, tabBarActiveTintColor: "#4287f5", tabBarStyle: { borderColor: "#0b0b0b", borderTopColor: "#0b0b0b", borderBottomColor: "#0b0b0b", borderLeftColor: "#0b0b0b", borderRightColor: "#0b0b0b", borderEndColor: "#0b0b0b", borderStartColor: "#0b0b0b" } }} >
             <Tab.Screen name="Home" component={HomeStackScreen} options={{ tabBarColor: "#0b0b0b", tabBarIcon: ({ focused, color }) => (<SimpleLineIcons name="home" color={focused ? "#4287f5" : "#011d4a"} size={20} />) }} />
             <Tab.Screen name="Portfolio" component={PortfolioStackScreen} options={{ tabBarColor: "#0b0b0b", tabBarIcon: ({ focused, color }) => (<SimpleLineIcons name="briefcase" color={focused ? "#4287f5" : "#011d4a"} size={20} />) }} />
-            <Tab.Screen name="News" component={NewsStackScreen} options={{ tabBarColor: "#0b0b0b", tabBarIcon: ({ focused, color }) => (<SimpleLineIcons name="calendar" color={focused ? "#4287f5" : "#011d4a"} size={20} />) }} />
+            <Tab.Screen name="News" component={EmptyScreen} options={{ tabBarColor: "#0b0b0b", tabBarIcon: ({ focused, color }) => (<SimpleLineIcons name="calendar" color={focused ? "#4287f5" : "#011d4a"} size={20} />) }} />
             <Tab.Screen name="Notifications" component={NotificationsStackScreen} options={{ tabBarColor: "#0b0b0b", tabBarIcon: ({ focused, color }) => (<SimpleLineIcons name="bell" color={focused ? "#4287f5" : "#011d4a"} size={20} />) }} />
             <Tab.Screen name="Profile" component={ProfileStackScreen} options={{ tabBarLabel: "Profile", tabBarColor: "#0b0b0b", tabBarIcon: ({ focused, color }) => (<SimpleLineIcons name="user" color={focused ? "#4287f5" : "#011d4a"} size={20} />) }} />
         </Tab.Navigator>
@@ -34,7 +40,7 @@ const MainTabScreen = () => {
 
 
 
-export default MainTabScreen;
+
 
 const HomeStackScreen = ({ navigation }) => (
     <HomeStack.Navigator screenOptions={{ headerStyle: { backgroundColor: "#0b0b0b", borderBottomColor: "#0b0b0b" }, headerTintColor: "#4287f5", headerTitleStyle: { fontWeight: "bold" }, headerTitleAlign: "center" }} >
@@ -51,21 +57,29 @@ const ProfileStackScreen = ({ navigation }) => (
 
 const NotificationsStackScreen = ({ navigation }) => (
     <NotificationsStack.Navigator screenOptions={{ headerStyle: { backgroundColor: "#0b0b0b", borderBottomColor: "#0b0b0b" }, headerTintColor: "#4287f5", headerTitleStyle: { fontWeight: "bold" }, headerTitleAlign: "center" }} >
-        <NotificationsStack.Screen name="Notifications" component={Notifications} options={{ title: "Notifications", headerLeft: () => (<MaterialCommunityIcons.Button name="arrow-left" size={25} backgroundColor="#0b0b0b" color="#4287f5" onPress={() => { navigation.navigate("Home") }}></MaterialCommunityIcons.Button>) }} />
+        <NotificationsStack.Screen name="Notifications" component={Notifications} options={{ title: "Notifications" }} />
     </NotificationsStack.Navigator>
 )
 
 const PortfolioStackScreen = ({ navigation }) => (
     <PortfolioStack.Navigator screenOptions={{ headerStyle: { backgroundColor: "#0b0b0b", borderBottomColor: "#0b0b0b" }, headerTintColor: "#4287f5", headerTitleStyle: { fontWeight: "bold" }, headerTitleAlign: "center" }} >
-        <PortfolioStack.Screen name="Portfolio" component={Portfolio} options={{ title: "Portfolio", headerLeft: () => (<MaterialCommunityIcons.Button name="arrow-left" size={25} backgroundColor="#0b0b0b" color="#4287f5" onPress={() => { navigation.navigate("Home") }}></MaterialCommunityIcons.Button>) }} />
+        <PortfolioStack.Screen name="Portfolio" component={Portfolio} options={{ title: "Portfolio", }} />
     </PortfolioStack.Navigator>
 )
 
-const NewsStackScreen = ({ navigation }) => (
-    <PortfolioStack.Navigator screenOptions={{ headerStyle: { backgroundColor: "#0b0b0b", borderBottomColor: "#0b0b0b" }, headerTintColor: "#4287f5", headerTitleStyle: { fontWeight: "bold" }, headerTitleAlign: "center" }} >
-        <PortfolioStack.Screen name="News" component={News} options={{ title: "News", headerLeft: () => (<MaterialCommunityIcons.Button name="arrow-left" size={25} backgroundColor="#0b0b0b" color="#4287f5" onPress={() => { navigation.navigate("Home") }}></MaterialCommunityIcons.Button>) }} />
-    </PortfolioStack.Navigator>
+export const NewsStackScreen = ({ navigation }) => (
+    <NewsStack.Navigator screenOptions={{ headerStyle: { backgroundColor: "#0b0b0b", borderBottomColor: "#0b0b0b" }, headerTintColor: "#4287f5", headerTitleStyle: { fontWeight: "bold" }, headerTitleAlign: "center" }} >
+        <NewsStack.Screen name="News" component={News} options={{ title: "News", headerLeft: () => (<MaterialCommunityIcons.Button name="arrow-left" size={25} backgroundColor="#0b0b0b" color="#4287f5" onPress={() => { navigation.navigate("Home") }} ></MaterialCommunityIcons.Button>) }} />
+    </NewsStack.Navigator>
 )
 
+export const SettingsStackScreen = () => (
+    <SettingsStack.Navigator screenOptions={{ headerStyle: { backgroundColor: "#0b0b0b", borderBottomColor: "#0b0b0b" }, headerTintColor: "#4287f5", headerTitleStyle: { fontWeight: "bold" }, headerTitleAlign: "center" }} >
+        <SettingsStack.Screen name="Settings" component={Settings} options={{ title: "Settings", }} />
+    </SettingsStack.Navigator>
+)
+
+
+export default MainTabScreen;
 
 

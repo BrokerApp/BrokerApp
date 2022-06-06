@@ -99,7 +99,7 @@ const RegisterScreen = ({ navigation }) => {
     return (
         <View behavior="padding" style={styles.container}>
             <StatusBar barStyle="light-content" backgroundColor="#191914" />
-            <Text style={{ color: "orange", fontSize: 28, fontWeight: "bold" }}>Register</Text>
+            <Text style={{ color: "#4287f5", fontSize: 28, fontWeight: "bold" }}>Register</Text>
             <View style={styles.inputContainer}>
                 {/* <View style={styles.inputField} >
                         <TextInput placeholder="Name/Surname" style={styles.textInput} value={name} autoCapitalize="none" autoFocus onChangeText={(text) => setName(text.trim())} />
@@ -126,7 +126,7 @@ const RegisterScreen = ({ navigation }) => {
 
                 <View style={{ marginRight: 10 }} >
                     <TouchableOpacity>
-                        <MaterialCommunityIcons name={data.secureTextEntry ? "eye-off" : "eye"} onPress={updateSecureTextEntry} color="orange" size={20} />
+                        <MaterialCommunityIcons name={data.secureTextEntry ? "eye-off" : "eye"} onPress={updateSecureTextEntry} color="#4287f5" size={20} />
                     </TouchableOpacity>
                 </View>
             </View>
@@ -141,14 +141,14 @@ const RegisterScreen = ({ navigation }) => {
 
                 <View style={{ marginRight: 10 }} >
                     <TouchableOpacity>
-                        <MaterialCommunityIcons name={data.secureTextEntry ? "eye-off" : "eye"} onPress={updateSecureTextEntry} color="orange" size={20} />
+                        <MaterialCommunityIcons name={data.secureTextEntry ? "eye-off" : "eye"} onPress={updateSecureTextEntry} color="#4287f5" size={20} />
                     </TouchableOpacity>
                 </View>
             </View>
             {password == confirmPassword ? null :
                 <Text style={styles.errorMsg}>Passwords must match</Text>
             }
-            <Button onPress={register} disabled={!userName || !email || password.length < 8 || confirmPassword.length < 8 || password != confirmPassword} containerStyle={[styles.button, { marginTop: 20 }]} buttonStyle={{ backgroundColor: "orange", width: 290, borderRadius: 11 }} title="Sign up" />
+            <Button onPress={register} disabled={!userName || !email || password.length < 8 || confirmPassword.length < 8 || password != confirmPassword} containerStyle={[styles.button, { marginTop: 20 }]} buttonStyle={{ backgroundColor: "#4287f5", width: 290, borderRadius: 11 }} title="Sign up" />
 
             <View style={{ height: 20 }} />
 

@@ -49,7 +49,7 @@ const LoginScreen = ({ navigation }) => {
             <StatusBar barStyle="light-content" backgroundColor="#191914" />
             {/* <Image style={styles.logo} />  */}
             <View style={{ height: 20 }} />
-            <Text style={{ color: "orange", fontSize: 28, fontWeight: "bold" }}>Login</Text>
+            <Text style={{ color: "#4287f5", fontSize: 28, fontWeight: "bold" }}>Login</Text>
             <View style={styles.inputContainer} >
                 <View style={styles.inputField} >
                     <TextInput placeholder="E-mail" style={styles.textInput} autoCapitalize="none" autoFocus value={email} onChangeText={(text) => { setEmail(text.trim().toLowerCase()) }} />
@@ -59,13 +59,13 @@ const LoginScreen = ({ navigation }) => {
                 <TextInput placeholder="Password" style={styles.textInput} autoCapitalize="none" secureTextEntry={data.secureTextEntry ? true : false} value={password} onChangeText={(text) => setPassword(text)} />
                 <View style={{ marginRight: 10 }} >
                     <TouchableOpacity>
-                        <MaterialCommunityIcons name={data.secureTextEntry ? "eye-off" : "eye"} onPress={updateSecureTextEntry} color="orange" size={20} />
+                        <MaterialCommunityIcons name={data.secureTextEntry ? "eye-off" : "eye"} onPress={updateSecureTextEntry} color="#4287f5" size={20} />
                     </TouchableOpacity>
                 </View>
             </View>
-            <Button onPress={signIn} disabled={email.length < 4 || password.length < 8} containerStyle={[styles.button, { marginTop: 20 }]} buttonStyle={{ backgroundColor: "orange", width: 290, borderRadius: 11 }} title="Sign in" />
+            <Button onPress={signIn} disabled={email.length < 4 || password.length < 8} containerStyle={[styles.button, { marginTop: 20 }]} buttonStyle={{ backgroundColor: "#4287f5", width: 290, borderRadius: 11 }} title="Sign in" />
             {error.length > 0 && <Text style={styles.errorMsg} >{error}</Text>}
-            <Button onPress={() => navigation.navigate("Register")} containerStyle={[styles.button, { marginTop: 10 }]} buttonStyle={{ backgroundColor: "orange", width: 290, borderRadius: 11 }} title="Register" />
+            <Button onPress={() => navigation.navigate("Register")} containerStyle={[styles.button, { marginTop: 10 }]} buttonStyle={{ backgroundColor: "#4287f5", width: 290, borderRadius: 11 }} title="Register" />
             <Button onPress={() => navigation.navigate("ResetPassword")} containerStyle={[styles.button, { marginTop: 10, justifyContent: "center", marginBottom: 25 }]} type="clear" buttonStyle={{ width: 250 }} titleStyle={{ color: "white" }} title="Forget password ?" />
             {/* <View style={{ alignItems: "center", }} >
                 <TouchableOpacity style={{ backgroundColor: "#c7d7ff", width: 280, height: 40, justifyContent: "center", marginBottom: 8, borderRadius: 10 }} >

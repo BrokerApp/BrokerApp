@@ -10,8 +10,10 @@ import Home from "./screens/MainScreens/Home"
 import Notifications from "./screens/MainScreens/Notifications"
 import Profile from "./screens/MainScreens/Profile"
 import Portfolio from "./screens/MainScreens/Portfolio"
-import MainTabScreen from './screens/MainScreens/TabScreens';
+import MainTabScreen, { NewsStackScreen, SettingsStackScreen } from './screens/MainScreens/TabScreens';
 import News from './screens/MainScreens/News';
+import Settings from './screens/SubScreens/Settings';
+
 
 const Stack = createNativeStackNavigator();
 
@@ -47,10 +49,10 @@ const App = () => {
       <View style={{ flex: 1, justifyContent: "space-between", alignItems: "center", backgroundColor: "#191914", flexDirection: "column" }} >
         <View style={{ height: 50, }} />
         {/* <Image source={require("./assets/icon.png")}  style={{ width: 150, height: 150, }} /> */}
-        <Text style={{ fontWeight: "bold", fontSize: 48, color: "orange" }} >F</Text>
+        <Text style={{ fontWeight: "bold", fontSize: 48, color: "#4287f5" }} >F</Text>
 
         <View style={{ justifyContent: "flex-end" }} >
-          <Text style={{ marginRight: 11, backgroundColor: "#191914", color: "orange", borderRadius: 11, fontSize: 28, marginBottom: 20 }}> finfriend® </Text>
+          <Text style={{ marginRight: 11, backgroundColor: "#191914", color: "#4287f5", borderRadius: 11, fontSize: 28, marginBottom: 20 }}> finfriend® </Text>
         </View>
       </View>
     )
@@ -77,7 +79,7 @@ const App = () => {
           <Stack.Screen name="News" component={News} />
           <Stack.Screen name="Notifications" component={Notifications} />
           <Stack.Screen name="Profile" component={Profile} />
-          {/* <Stack.Screen name="Notifications" component={Notifications} /> */}
+          <Stack.Screen name="Settings" component={SettingsStackScreen} />
         </Stack.Navigator>
 
       </NavigationContainer>

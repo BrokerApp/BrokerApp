@@ -28,7 +28,7 @@ const Tab = createBottomTabNavigator();
 
 const MainTabScreen = () => {
     return (
-        <Tab.Navigator initialRouteName="Home" screenOptions={{ tabBarActiveBackgroundColor: "#0b0b0b", tabBarInactiveBackgroundColor: "#0b0b0b", headerShown: false, tabBarActiveTintColor: "#4287f5", tabBarStyle: { borderColor: "#0b0b0b", borderTopColor: "#0b0b0b", borderBottomColor: "#0b0b0b", borderLeftColor: "#0b0b0b", borderRightColor: "#0b0b0b", borderEndColor: "#0b0b0b", borderStartColor: "#0b0b0b" } }} >
+        <Tab.Navigator initialRouteName="Portfolio" screenOptions={{ tabBarActiveBackgroundColor: "#0b0b0b", tabBarInactiveBackgroundColor: "#0b0b0b", headerShown: false, tabBarActiveTintColor: "#4287f5", tabBarStyle: { borderColor: "#0b0b0b", borderTopColor: "#0b0b0b", borderBottomColor: "#0b0b0b", borderLeftColor: "#0b0b0b", borderRightColor: "#0b0b0b", borderEndColor: "#0b0b0b", borderStartColor: "#0b0b0b" } }} >
             <Tab.Screen name="Home" component={HomeStackScreen} options={{ tabBarColor: "#0b0b0b", tabBarIcon: ({ focused, color }) => (<SimpleLineIcons name="home" color={focused ? "#4287f5" : "#011d4a"} size={20} />) }} />
             <Tab.Screen name="Portfolio" component={PortfolioStackScreen} options={{ tabBarColor: "#0b0b0b", tabBarIcon: ({ focused, color }) => (<SimpleLineIcons name="briefcase" color={focused ? "#4287f5" : "#011d4a"} size={20} />) }} />
             <Tab.Screen name="News" component={NewsStackScreen} options={{ tabBarColor: "#0b0b0b", tabBarIcon: ({ focused, color }) => (<SimpleLineIcons name="calendar" color={focused ? "#4287f5" : "#011d4a"} size={20} />) }} />

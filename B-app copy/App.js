@@ -1,6 +1,5 @@
-import { StatusBar } from 'expo-status-bar';
 import { useEffect, useState } from 'react';
-import { StyleSheet, Text, View, Image } from 'react-native';
+import { StyleSheet, Text, View, Image, StatusBar } from 'react-native';
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { auth } from "./firebase";
@@ -10,9 +9,10 @@ import Home from "./screens/MainScreens/Home"
 import Notifications from "./screens/MainScreens/Notifications"
 import Profile from "./screens/MainScreens/Profile"
 import Portfolio from "./screens/MainScreens/Portfolio"
-import MainTabScreen, { NewsStackScreen, SettingsStackScreen } from './screens/MainScreens/TabScreens';
+import MainTabScreen, { NewsStackScreen, NotificationsStackScreen, SettingsStackScreen } from './screens/MainScreens/TabScreens';
 import News from './screens/MainScreens/News';
 import Settings from './screens/SubScreens/Settings';
+import Accounting from './screens/MainScreens/Accounting';
 
 
 const Stack = createNativeStackNavigator();
@@ -72,14 +72,15 @@ const App = () => {
   else {
     return (
       <NavigationContainer  >
-        <StatusBar barStyle="light-content" backgroundColor="#0b0b0b" />
+        <StatusBar barStyle="light-content" backgroundColor="#030012" />
         <Stack.Navigator screenOptions={{ headerShown: false }} drawerContent={props => <DrawerContent {...props} />}  >
           <Stack.Screen name="Home" component={MainTabScreen} />
           <Stack.Screen name="Portfolio" component={Portfolio} />
           <Stack.Screen name="News" component={News} />
-          <Stack.Screen name="Notifications" component={Notifications} />
+          <Stack.Screen name="Notifications" component={NotificationsStackScreen} />
           <Stack.Screen name="Profile" component={Profile} />
           <Stack.Screen name="Settings" component={SettingsStackScreen} />
+          <Stack.Screen name="Accounting" component={Accounting} />
         </Stack.Navigator>
 
       </NavigationContainer>

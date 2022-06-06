@@ -1,60 +1,102 @@
-import React, { useState } from 'react';
-import { Text, View } from 'react-native';
 
-class Stock extends React.Component {
-    constructor(props) {
-        super(props)
-        this.state = {
-            stockLastPrice: "",
-            stockNameInfo: "",
-            stockPriceChange: ""
+import React, { useState, useEffect } from 'react';
+import { Text, TouchableOpacity, View } from 'react-native'
+
+const Stock = () => {
+    const [stockPrice, setStockPrice] = useState("")
+    const [stockName, setStockName] = useState("")
+    const [priceChange, setPriceChange] = useState("")
+
+    function toFixedPrice(num, fixed) {
+        var re = new RegExp('^-?\\d+(?:\.\\d{0,' + (fixed || -1) + '})?');
+        return num.toString().match(re)[0];
+    }
+
+
+    const renderButtons = () => {
+        const views = []
+
+        let stockList = ["TSLA", "AAPL", "AMZN", "DOW"]
+
+
+        const listStock = stockList[0]
+
+        let API_Call = 'https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=' + listStock + '&apikey=A3EMQP6CDDJXUWYN';
+
+
+
+
+        const fetchData = async () => {
+            const response = await fetch(API_Call)
+            const json = await response.json()
+
+            const data = json['Meta Data']['2. Symbol']
+            setStockName(data)
+
+            let firstElement = Object.keys(json['Time Series (Daily)'])[0]
+            let secondElement = Object.keys(json['Time Series (Daily)'])[1]
+
+            let tempStockPrice = json['Time Series (Daily)'][secondElement]['1. open']
+            let stockLastPrice = json['Time Series (Daily)'][firstElement]['1. open']
+
+
+            //search dot in price
+            let dotPos = stockLastPrice.search(/\./) + 3
+
+            //return number with fixed dot
+
+
+            setPriceChange(toFixedPrice(tempStockPrice - stockLastPrice, 2))
+
+
+            setStockPrice(stockLastPrice.substring(0, dotPos))
+
+
+            // setStockName(Object.keys(json['Meta Data']['2. Symbol']))
+
         }
-    }
-    componentDidMount() {
-        this.fetchStock();
-    }
-    fetchStock() {
-        let API_Call = 'https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=TSLA&apikey=A3EMQP6CDDJXUWYN';
-        let stockNameInfo = "";
-        let stockLastPrice = "";
-        let stockPriceChange = "";
+        useEffect(() => {
+            fetchData()
+        }, [])
 
+        views.push(
 
-        fetch(API_Call)
-            .then(
-                function (response) {
-                    return response.json();
-                }
-            )
-            .then(
-                function (data) {
-                    console.log(data);
-                    stockNameInfo = data['Meta Data']['2. Symbol'];
-                    let length = (Object.keys(data['Time Series (Daily)']).length)
-
-                    let firstElement = Object.keys(data['Time Series (Daily)'])[0]
-                    let secondElement = Object.keys(data['Time Series (Daily)'])[1]
-
-                    stockLastPrice = data['Time Series (Daily)'][firstElement]['1. open']
-
-                    let tempStockPrice = data['Time Series (Daily)'][secondElement]['1. open']
-
-                    stockPriceChange = tempStockPrice - stockLastPrice;
-
-
-                    console.log(stockPriceChange)
-                }
-            )
-    }
-
-    render() {
-
-        //function for checking color of the text red or green
-        return (
-            <View>
-                <Text></Text>
+            <View style={{ width: "100%", backgroundColor: "#030000", height: 70, marginTop: 10, paddingLeft: 30, justifyContent: "center", borderBottomColor: "#454545", borderBottomWidth: 0.5 }} >
+                <TouchableOpacity style={{ width: "100%", }} onPress={() => console.log("worked")} >
+                    <View style={{ flexDirection: "row", justifyContent: "space-between" }} >
+                        <Text style={{ color: "white", fontSize: 28, }} >Amazon.com</Text>
+                        <Text style={{ color: "white", fontSize: 28, marginRight: 10 }}> {stockPrice} $</Text>
+                    </View>
+                    <View style={{ flexDirection: "row", justifyContent: "space-between" }} >
+                        <Text style={{ color: "gray", fontSize: 13 }} >{stockName}</Text>
+                        <Text style={{ backgroundColor: priceChange >= 0 ? "#09ad00" : "#ad0000", fontSize: 20, marginRight: 10, color: "white", borderRadius: 10, marginBottom: 5 }}> {priceChange} $ </Text>
+                    </View>
+                </TouchableOpacity>
             </View>
+
+
+
         )
+
+
+        return views;
     }
+
+
+
+    return (
+
+
+        <View style={{ backgroundColor: "#030012", flex: 1, alignItems: "center", width: "100%", borderBottomColor: "gray" }} >
+            {renderButtons()}
+        </View>
+
+
+
+    );
+
 }
+
+
 export default Stock;
+

@@ -12,7 +12,7 @@ const Profile = () => {
     }
     console.log(auth.currentUser.displayName)
     return (
-        <View style={{ backgroundColor: "#02000d", flex: 1, alignItems: "center" }}>
+        <View style={{ backgroundColor: "#030012", flex: 1, alignItems: "center" }}>
             <View style={{ marginTop: 10, marginBottom: 10 }} >
                 <Avatar rounded source={{ uri: auth?.currentUser?.photoURL }} size={80} />
             </View>
